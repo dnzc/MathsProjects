@@ -1,2 +1,2 @@
 # LatexProjects
-My latex projects - compiled using MiKTeX / VSCode(vim) .
+My latex projects. Mostly just a collection of my random mathematical thoughts, written up neatly.
