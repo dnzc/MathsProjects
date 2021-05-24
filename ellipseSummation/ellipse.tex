@@ -18,14 +18,14 @@
 
 
 \section{Introduction}
-Using an arc length integral it is possible to show that the circumference of an ellipse with height 2b and width 2a is
-\[4a\int_{0}^{\pi/2}\sqrt{1 + (\frac{a^2}{b^2}-1)\sin^2x}\,\,dx\]
-This can be proved with an arc length integral on an ellipse. 
-In 1.1 the integral is setup to be turned into an infinite summation. 
-In later sections I go through each case established in 1.1.
+Using an arc length integral it is possible to show that the circumference, $C$, of an ellipse with height 2b and width 2a is
+\[C = 4a\int_{0}^{\pi/2}\sqrt{1 + (\frac{a^2}{b^2}-1)\sin^2x}\,\,dx\]
+This is derived in the appendix. 
+In section 1.1 we setup the integral to be turned into an infinite sigma summation. 
+In later sections I go through each case established in 1.1 to derive two infinite sums equal to the circumference, then equate them.
 \subsection{Problem setup}
-Let $c = (\frac{a^2}{b^2}-1)$. Then the integral will be
-\[4a\int_{0}^{\pi/2}(1 + c\sin^2x)^\frac{1}{2}\,\,dx\]
+Let $c = \frac{a^2}{b^2}-1$. Then the integral will be
+\[C = 4a\int_{0}^{\pi/2}(1 + c\sin^2x)^\frac{1}{2}\,\,dx\]
 We will use the binomial expansion for nonintegers on $(1 + c\sin^2x)^\frac{1}{2}$, then integrate term by term.\\
 In the next sections we consider the 2 cases of c: $|c| \leq 1$, and $|c| \geq 1$.
 
@@ -35,31 +35,26 @@ In the next sections we consider the 2 cases of c: $|c| \leq 1$, and $|c| \geq 1
 We solve the case of $|c| \geq 1$.
 \begin{equation}
 \begin{split}
-	4a\int_{0}^{\pi/2}(1 + c\sin^2x)^\frac{1}{2}\,\,dx
-	= 4a\int_{0}^{\pi/2}(1 + c - c\cos^2x)^\frac{1}{2}\,\,dx\\
-	= 4a\int_{0}^{\pi/2}\left((c+1)(1 - \frac{c}{c+1}\cos^2x)\right)^\frac{1}{2}\,\,dx\\
+	C = 4a\int_{0}^{\pi/2}(1 + c\sin^2x)^\frac{1}{2}\,\,dx\\
 	= 4a\sqrt{c+1}\int_{0}^{\pi/2}(1 - \frac{c}{c+1}\cos^2x)^\frac{1}{2}\,\,dx
 \end{split}
 \end{equation}
-Note that if $|c|\geq 1$ then $c\geq 1$ since $\frac{a^2}{b^2} - 1$ must be $>-1$. $\therefore |\frac{c}{c+1}cos^2x|<1\forall x \in \mathbb{R}$\\
+Note that $\because c=\frac{a^2}{b^2} - 1 > -1, |c|\geq 1 \implies c\geq 1$\\
+$\therefore |\frac{c}{c+1}cos^2x|<1\forall x \in \mathbb{R}$\\
 So now we can use the binomial expansion.
 \begin{equation*}
 \begin{split}
 	\left(1 - \frac{c}{c+1}\cos^2x\right)^\frac{1}{2}
-	= 1 + \frac{1}{2}\left(-\frac{c}{c+1}\cos^2x\right) + \frac{\frac{1}{2}\times-\frac{1}{2}}{2!}\left(-\frac{c}{c+1}\cos^2x\right)^2 \dots\\
-	= 1 + \sum_{k\geq 1} \frac{\frac{1}{2}\times-\frac{1}{2}\dots\times(\frac{1}{2}-k+1)}{k!}\left(-\frac{c}{c+1}\cos^2x\right)^k
-	= 1 + \sum_{k\geq 1} \frac{\prod_{n=1}^{k}(3-2n)}{2^kk!}\left(-\frac{c}{c+1}\right)^k\cos^{2k}x\\
+	= 1 + \sum_{k\geq 1} \frac{\frac{1}{2}\times-\frac{1}{2}\dots\times(\frac{1}{2}-k+1)}{k!}\left(-\frac{c}{c+1}\cos^2x\right)^k\\
 	= 1 + \sum_{k\geq 1} \frac{\prod_{n=1}^{k}(2n-3)}{2^kk!}\left(\frac{c}{c+1}\right)^k\cos^{2k}x
 \end{split}
 \end{equation*}
 Substitute this back into (1):
 \begin{equation*}
 \begin{split}
-	4a\sqrt{c+1}\int_{0}^{\pi/2}\left(
+	C = 4a\sqrt{c+1}\int_{0}^{\pi/2}\left(
 	1 + \sum_{k\geq 1} \frac{\prod_{n=1}^{k}(2n-3)}{2^kk!}\left(\frac{c}{c+1}\right)^k\cos^{2k}x
 	\right)dx\\
-	= 4a\sqrt{c+1}\int_{0}^{\pi/2}1dx + 
-	4a\sqrt{c+1}\int_{0}^{\pi/2}\sum_{k\geq 1} \frac{\prod_{n=1}^{k}(2n-3)}{2^kk!}\left(\frac{c}{c+1}\right)^k\cos^{2k}x\,dx\\
 	= 2\pi a\sqrt{c+1} + 4a\sqrt{c+1}\int_{0}^{\pi/2}\sum_{k\geq 1} \frac{\prod_{n=1}^{k}(2n-3)}{2^kk!}\left(\frac{c}{c+1}\right)^k\cos^{2k}x\,dx\\
 \end{split}
 \end{equation*}
@@ -70,6 +65,200 @@ Integrating term by term (sum and integral are interchanged):
 	4a\sqrt{c+1}\sum_{k\geq 1}\left( \frac{\prod_{n=1}^{k}(2n-3)}{2^kk!}\left(\frac{c}{c+1}\right)^k\int_{0}^{\pi/2}\cos^{2k}x\,dx\right)\\
 \end{split}
 \end{equation}
+
+It is proved in the appendix that $\int_{0}^{\pi/2}\cos^{2k}(x)\,\,dx = \frac{\pi}{2}\prod_{n=1}^{k}\frac{2n-1}{2n}$
+
+
+Substitute this back into (2):
+\begin{equation}
+\begin{split}
+	C = 
+	2\pi a\sqrt{c+1} +
+	4a\sqrt{c+1}\sum_{k\geq 1}\left( \frac{\prod_{n=1}^{k}(2n-3)}{2^kk!}\left(\frac{c}{c+1}\right)^k\frac{\pi}{2}\prod_{n=1}^{k}\frac{2n-1}{2n}\right)\\
+	= 2\pi a\sqrt{c+1} +
+	2\pi a\sqrt{c+1}\sum_{k\geq 1}\left( \frac{\prod_{n=1}^{k}(2n-3)\prod_{n=1}^{k}(2n-1)}{2^kk!\prod_{n=1}^k(2n)}\left(\frac{c}{c+1}\right)^k\right)\\
+	= 2\pi a\sqrt{c+1} \left(1 + 
+	\sum_{k\geq 1}\left( \frac{\prod_{n=1}^{k}(2n-3)(2n-1)}{4^k(k!)^2}\left(\frac{c}{c+1}\right)^k\right)\right)\\
+\end{split}
+\end{equation}
+
+Note
+\begin{equation}
+\begin{split}
+	\prod_{n=1}^k(2n-3)(2n-1)
+	= (-1 \times 1) \times (1\times 3)\times\dots\times[(2k-3)\times(2k-1)]\\
+	= -1 \times 1^2 \times 3^2 \times\dots\times(2k-3)^2 \times (2k-1)\\
+	= (1-2k)\left[1\times3\times\dots\times(2k-3)\right]^2\\
+	= (1-2k)\left[\frac{1\times2\times3\times\dots\times(2k-3)\times(2k-2)}{2\times4\times\dots\times(2k-2)}\right]^2\\
+	= \frac{1-2k}{4^{k-1}}\left[\frac{(2k-2)!}{(k-1)!}\right]^2
+\end{split}
+\end{equation}
+
+Substitute back into (3):
+\begin{equation*}
+\begin{split}
+	C
+	= 2\pi a\sqrt{c+1} \left(1 + 
+	\sum_{k\geq 1}\left( \frac{(1-2k)\left[\frac{(2k-2)!}{(k-1)!}\right]^2}{4^{k-1}4^k(k!)^2}\left(\frac{c}{c+1}\right)^k\right)\right)\\
+	= 2\pi a\sqrt{c+1} \left(1 + 
+	\sum_{k\geq 1}\left( \frac{-1}{4^{2k-1}(2k-1)}\left[\frac{(2k-1)(2k-2)!}{k!(k-1)!}\right]^2\left(\frac{c}{c+1}\right)^k\right)\right)\\
+	= 2\pi a\sqrt{c+1} \left(1 -
+	\sum_{k\geq 1} \frac{4^{1-2k}}{2k-1}{{2k-1}\choose{k-1}}^2\left(\frac{c}{c+1}\right)^k\right)\\
+\end{split}
+\end{equation*}
+
+Reindex:
+\begin{equation*}
+\begin{split}
+	= 2\pi a\sqrt{c+1} \left(1 -
+	\sum_{k\geq 0} \frac{4^{-1-2k}}{2k+1}{{2k+1}\choose k}^2\left(\frac{c}{c+1}\right)^{k+1}\right)\\
+\end{split}
+\end{equation*}
+
+\begin{tcolorbox}
+\begin{equation*}
+\begin{split}
+	C = \frac{\pi a\sqrt{c+1}}{2} \left(4 -
+	\sum_{k=0}^{\infty} \frac{16^{-k}{{2k+1}\choose k}^2}{2k+1}\left(\frac{c}{c+1}\right)^{k+1}\right)\\
+\end{split}
+\end{equation*}
+\end{tcolorbox}
+
+
+
+\section{Case 2}
+Now we solve the case $|c| \leq 1$.
+\begin{equation*}
+\begin{split}
+	C = 4a\int_{0}^{\pi/2}(1 + c\sin^2x)^\frac{1}{2}\,\,dx
+\end{split}
+\end{equation*}
+Note that $|csin^2x|<1\forall x, 0\leq x < \frac{\pi}{2}$\\
+So we can use the binomial expansion.
+\begin{equation*}
+\begin{split}
+	= 4a\int_{0}^{\pi/2}\left(1 + \sum_{k\geq 1}\frac{\frac{1}{2}\times-\frac{1}{2}\times\cdots\times(\frac{1}{2}-k+1)}{k!}(c\sin^2x)^k\right)\,\,dx
+\end{split}
+\end{equation*}
+Integrate term by term:
+\begin{equation}
+\begin{split}
+	= 2\pi a + 4a\sum_{k\geq 1}\frac{\frac{1}{2}\times\cdots\times(\frac{3}{2}-k)}{k!}c^k\int_{0}^{\pi/2}\sin^{2k}x\,\,dx\\
+\end{split}
+\end{equation}
+
+It is proved in the appendix that 
+$\int_{0}^{\pi/2}\sin^{2k}x\,\,dx = \frac{\pi}{2}\prod_{n=1}^k\frac{2n-1}{2n}$\\
+Substitute back into (5):
+\begin{equation*}
+\begin{split}
+	C
+	= 2\pi a+4a\sum_{k\geq 1}\frac{\frac{1}{2}\times\cdots\times(\frac{3}{2}-k)}{k!}c^k\frac{\pi}{2}\prod_{n=1}^k\frac{2n-1}{2n}\\
+	= 2\pi a + 2\pi a\sum_{k\geq 1}\frac{\prod_{n=1}^k(3-2n)\prod_{n=1}^k(2n-1)}{2^kk!\prod_{n=1}^k(2n)}c^k\\
+	= 2\pi a\left(1+\sum_{k\geq 1}\frac{\prod_{n=1}^k(2n-3)(2n-1)}{4^k(k!)^2}(-c)^k\right)\\
+\end{split}
+\end{equation*}
+Substitute (4) in:
+\begin{equation*}
+\begin{split}
+	= 2\pi a\left(1+\sum_{k\geq 1}\frac{(1-2k)\left[\frac{(2k-2)!}{(k-1)!}\right]^2}{4^{k-1}4^k(k!)^2}(-c)^k\right)\\
+	= 2\pi a\left(1+\sum_{k\geq 1}\frac{-1}{4^{2k-1}(2k-1)}\left[\frac{(2k-1)(2k-2)!}{k!(k-1)!}\right]^2(-c)^k\right)\\
+	= 2\pi a\left(1-\sum_{k\geq 1}\frac{4^{1-2k}}{2k-1}{{2k-1}\choose {k-1}}^2(-c)^k\right)\\
+\end{split}
+\end{equation*}
+Reindex:
+\begin{equation*}
+\begin{split}
+	= 2\pi a\left(1-\sum_{k\geq 0}\frac{4^{-1-2k}}{2k+1}{{2k+1}\choose k}^2(-c)^{k+1}\right)\\
+\end{split}
+\end{equation*}
+\begin{tcolorbox}
+\begin{equation*}
+\begin{split}
+	C = \frac{\pi a}{2}\left(4-\sum_{k=0}^{\infty}\frac{16^{-k}{{2k+1}\choose k}^2}{2k+1}(-c)^{k+1}\right)\\
+\end{split}
+\end{equation*}
+\end{tcolorbox}
+Note when c=0 (a=b so the ellipse is a circle) the whole summation vanishes so $C$ becomes $2\pi a$.
+
+
+
+\section{Summary}
+I have derived 2 infinite sums for the circumference, $C$, of an ellipse depending on $|c|$ Where 2a is the width, 2b is the height and $c=\frac{a^2}{b^2}-1$.
+\begin{equation*}
+\end{equation*}
+
+If $|c| \geq 1$:
+\begin{equation*}
+\begin{split}
+	C = \frac{\pi a\sqrt{c+1}}{2} \left(4 -
+	\sum_{k=0}^{\infty} \frac{16^{-k}{{2k+1}\choose k}^2}{2k+1}\left(\frac{c}{c+1}\right)^{k+1}\right)\\
+\end{split}
+\end{equation*}
+
+If $|c| \leq 1$:
+\begin{equation*}
+\begin{split}
+	C = \frac{\pi a}{2}\left(4-\sum_{k=0}^{\infty}\frac{16^{-k}{{2k+1}\choose k}^2}{2k+1}(-c)^{k+1}\right)\\
+\end{split}
+\end{equation*}
+
+\section{Discovery}
+I realized if you plug c=1 into both sums, they must be equal, therefore:
+\begin{equation*}
+\begin{split}
+	\frac{\pi a\sqrt{2}}{2} \left(4 -
+	\sum_{k=0}^{\infty} \frac{16^{-k}{{2k+1}\choose k}^2}{2k+1}\left(\frac{1}{2}\right)^{k+1}\right)
+	= \frac{\pi a}{2}\left(4-\sum_{k=0}^{\infty}\frac{16^{-k}{{2k+1}\choose k}^2}{2k+1}(-1)^{k+1}\right)\\
+\end{split}
+\end{equation*}
+Now simplify:
+
+\begin{equation*}
+\begin{split}
+	4\sqrt2 -
+	\sqrt2\sum_{k=0}^{\infty} \frac{16^{-k}{{2k+1}\choose k}^2}{2k+1}\left(\frac{1}{2}\right)^{k+1}
+	= 4-\sum_{k=0}^{\infty}\frac{16^{-k}{{2k+1}\choose k}^2}{2k+1}(-1)^{k+1}\\
+	\sqrt2\sum_{k=0}^{\infty} \frac{16^{-k}{{2k+1}\choose k}^2}{2k+1}\left(\frac{1}{2}\right)^{k+1}
+	-\sum_{k=0}^{\infty}\frac{16^{-k}{{2k+1}\choose k}^2}{2k+1}(-1)^{k+1}
+	= 4\sqrt2 - 4\\
+	\sum_{k=0}^{\infty} \left( \frac{16^{-k}{{2k+1}\choose k}^2\sqrt2}{(2k+1)2^{k+1}}
+	- \frac{16^{-k}{{2k+1}\choose k}^2}{2k+1}(-1)^{k+1} \right)
+	= 4\sqrt2 - 4\\
+	\sum_{k=0}^{\infty} \frac{16^{-k}{{2k+1}\choose k}^2}{(2k+1)} \left( \frac{\sqrt2}{2^{k+1}} - (-1)^{k+1} \right)
+	= 4\sqrt2 - 4\\
+	\sum_{k=0}^{\infty} \frac{16^{-k}2^{-k}{{2k+1}\choose k}^2}{(2k+1)} \left( \frac{\sqrt2}{2} + (-2)^k \right)
+	= 4\sqrt2 - 4\\
+\end{split}
+\end{equation*}
+
+\begin{tcolorbox}
+\begin{equation*}
+\begin{split}
+	\sum_{k=0}^{\infty} \frac{{{2k+1}\choose k}^2\left( 1 + \sqrt2(-2)^k \right)}{32^k(2k+1)} 
+	= 8 - 4\sqrt2\\
+\end{split}
+\end{equation*}
+\end{tcolorbox}
+Nice.
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 We now focus on $\int_{0}^{\pi/2}\cos^{2k}x\,\,dx$, let this be $I_k$.
 \begin{equation*}
 \begin{split}
@@ -89,93 +278,14 @@ Note that $I_0 = \frac{\pi}{2}$
 	= \int_{0}^{\pi/2}\cos^{2k}(x)\,\,dx = \frac{\pi}{2}\prod_{n=1}^{k}\frac{2n-1}{2n}
 \end{split}
 \end{equation*}
-Substitute this back into (2):
-\begin{equation}
-\begin{split}
-	2\pi a\sqrt{c+1} +
-	4a\sqrt{c+1}\sum_{k\geq 1}\left( \frac{\prod_{n=1}^{k}(2n-3)}{2^kk!}\left(\frac{c}{c+1}\right)^k\frac{\pi}{2}\prod_{n=1}^{k}\frac{2n-1}{2n}\right)\\
-	= 2\pi a\sqrt{c+1} +
-	2\pi a\sqrt{c+1}\sum_{k\geq 1}\left( \frac{\prod_{n=1}^{k}(2n-3)\prod_{n=1}^{k}(2n-1)}{2^kk!\prod_{n=1}^k(2n)}\left(\frac{c}{c+1}\right)^k\right)\\
-	= 2\pi a\sqrt{c+1} \left(1 + 
-	\sum_{k\geq 1}\left( \frac{\prod_{n=1}^{k}(2n-3)(2n-1)}{2^kk!2^kk!}\left(\frac{c}{c+1}\right)^k\right)\right)\\
-\end{split}
-\end{equation}
-(Here I spent a lot of time trying to use the Wallis product because it looked similar but it never worked)\\\\
-
-Note
-\begin{equation}
-\begin{split}
-	\prod_{n=1}^k(2n-3)(2n-1)
-	= (-1 \times 1) \times (1\times 3)\times\dots\times[(2k-3)\times(2k-1)]\\
-	= -1 \times 1^2 \times 3^2 \times\dots\times(2k-3)^2 \times (2k-1)\\
-	= (1-2k)\left[1\times3\times\dots\times(2k-3)\right]^2\\
-	= (1-2k)\left[\frac{1\times2\times3\times\dots\times(2k-3)\times(2k-2)}{2\times4\times\dots\times(2k-2)}\right]^2\\
-	= (1-2k)\left[\frac{(2k-2)!}{2^{k-1}(k-1)!}\right]^2
-	= (1-2k)\frac{[(2k-2)!]^2}{4^{k-1}[(k-1)!]^2}
-\end{split}
-\end{equation}
-
-Substitute back into (3):
-\begin{equation*}
-\begin{split}
-	= 2\pi a\sqrt{c+1} \left(1 + 
-	\sum_{k\geq 1}\left( \frac{(1-2k)[(2k-2)!]^2}{2^kk!2^kk!4^{k-1}[(k-1)!]^2}\left(\frac{c}{c+1}\right)^k\right)\right)\\
-	= 2\pi a\sqrt{c+1} \left(1 + 
-	\sum_{k\geq 1}\left( \frac{(1-2k)[(2k-2)!]^2}{4^{2k-1}(k!)^2[(k-1)!]^2}\left(\frac{c}{c+1}\right)^k\right)\right)\\
-	= 2\pi a\sqrt{c+1} \left(1 + 
-	\sum_{k\geq 1}\left( \frac{(1-2k)}{4^{2k-1}}\left[\frac{(2k-2)!}{k!(k-1)!}\right]^2\left(\frac{c}{c+1}\right)^k\right)\right)\\
-	= 2\pi a\sqrt{c+1} \left(1 + 
-	\sum_{k\geq 1}\left( \frac{(1-2k)}{4^{2k-1}}\left[\frac{1}{k}{{2k-2}\choose{k-1}}\right]^2\left(\frac{c}{c+1}\right)^k\right)\right)\\
-	= 2\pi a\sqrt{c+1} \left(1 -
-	\sum_{k\geq 1}\left( \frac{(2k-1)}{4^{2k-1}k^2}{{2k-2}\choose{k-1}}^2\left(\frac{c}{c+1}\right)^k\right)\right)
-\end{split}
-\end{equation*}
-
-Reindex:
-\begin{equation*}
-\begin{split}
-	= 2\pi a\sqrt{c+1} \left[1 -
-	\sum_{k\geq 0}\left( \frac{(2k+1)}{4^{2k+1}(k+1)^2}{{2k}\choose k}^2\left(\frac{c}{c+1}\right)^{k+1}\right)\right]\\
-	= 2\pi a\sqrt{c+1} \left[1 -
-	\frac{1}{4}\sum_{k\geq 0}\left( \frac{(2k+1)}{4^{2k}(k+1)^2}{{2k}\choose k}^2\left(\frac{c}{c+1}\right)^{k+1}\right)\right]\\
-	= \frac{\pi a\sqrt{c+1}}{2} \left[4 -
-	\sum_{k\geq 0}\left( \frac{(2k+1)}{16^k(k+1)^2}{{2k}\choose k}^2\left(\frac{c}{c+1}\right)^{k+1}\right)\right]
-\end{split}
-\end{equation*}
-
-\begin{tcolorbox}
-\begin{equation*}
-\begin{split}
-	= \frac{\pi a\sqrt{c+1}}{2} \left[4 - \sum_{k=0}^{\infty}\frac{(2k+1){{2k}\choose k}^2c^{k+1}}{16^k(k+1)^2(c+1)^{k+1}}\right]
-\end{split}
-\end{equation*}
-\end{tcolorbox}
-Note the integral approximation equals the summation approximation so it should be valid.
 
 
 
-\section{Case 2}
-Now we solve the case $|c| \leq 1$.
-\begin{equation*}
-\begin{split}
-	4a\int_{0}^{\pi/2}(1 + c\sin^2x)^\frac{1}{2}\,\,dx
-\end{split}
-\end{equation*}
-Note that $|csin^2x|<1\forall x, 0\leq x < \frac{\pi}{2}$\\
-So we can use the binomial expansion for $|c|\leq 1$ since the values of x only range from 0 to $\frac{\pi}{2}$ in the integral.
-\begin{equation*}
-\begin{split}
-	= 4a\int_{0}^{\pi/2}\left(1 + \frac{1}{2}c\sin^2x + \frac{\frac{1}{2}\times-\frac{1}{2}}{2!}(c\sin^2x)^2+\cdots\right)\,\,dx\\
-	= 4a\int_{0}^{\pi/2}\left(1 + \sum_{k\geq 1}\frac{\frac{1}{2}\times-\frac{1}{2}\times\cdots\times(\frac{1}{2}-k+1)}{k!}(c\sin^2x)^k\right)\,\,dx
-\end{split}
-\end{equation*}
-Integrate term by term:
-\begin{equation}
-\begin{split}
-	= 4a\int_{0}^{\pi/2}1\,dx + \sum_{k\geq 1}4a\int_{0}^{\pi/2} \frac{\frac{1}{2}\times\cdots\times(\frac{1}{2}-k+1)}{k!}(c\sin^2x)^k\,\,dx\\
-	= 2\pi a+4a\sum_{k\geq 1}\frac{\frac{1}{2}\times\cdots\times(\frac{3}{2}-k)}{k!}c^k\overbrace{\int_{0}^{\pi/2}\sin^{2k}x\,\,dx}^\text{Set =$I_k$}\\
-\end{split}
-\end{equation}
+
+
+
+
+
 Now we solve $I_k$.
 \begin{equation*}
 \begin{split}
@@ -190,107 +300,3 @@ Now we solve $I_k$.
 \end{equation*}
 Note that $I_0=\frac{\pi}{2}$
 \[\therefore I_k = \frac{2k-1}{2k}\times\frac{2k-3}{2k-2}\times\dots\times\frac{1}{2}I_0 = \frac{\pi}{2}\prod_{n=1}^k\frac{2n-1}{2n}\]
-Substitute back into (5):
-\begin{equation*}
-\begin{split}
-	2a\pi+4a\sum_{k\geq 1}\frac{\frac{1}{2}\times\cdots\times(\frac{3}{2}-k)}{k!}c^kI_k\\
-	= 2\pi a+4a\sum_{k\geq 1}\frac{\frac{1}{2}\times\cdots\times(\frac{3}{2}-k)}{k!}c^k\frac{\pi}{2}\prod_{n=1}^k\frac{2n-1}{2n}\\
-	= 2\pi a+2a\pi\sum_{k\geq 1}\frac{\prod_{n=1}^k(3-2m)}{2^kk!}c^k\prod_{n=1}^k\frac{2n-1}{2n}\\
-	= 2\pi a\left(1+\sum_{k\geq 1}\frac{\prod_{n=1}^k(3-2n)\prod_{n=1}^k(2n-1)}{2^kk!\prod_{n=1}^k(2n)}c^k\right)\\
-	= 2\pi a\left(1+\sum_{k\geq 1}\frac{\prod_{n=1}^k(3-2n)(2n-1)}{2^kk!2^kk!}c^k\right)\\
-	= 2\pi a\left(1+\sum_{k\geq 1}\frac{\prod_{n=1}^k(2n-3)(2n-1)}{4^k(k!)^2}c^k(-1)^k\right)\\
-\end{split}
-\end{equation*}
-Substitute (4) in:
-\begin{equation*}
-\begin{split}
-	2\pi a\left(1+\sum_{k\geq 1}\frac{(1-2k)\frac{[(2k-2)!]^2}{4^{k-1}[(k-1)!]^2}}{4^k(k!)^2}c^k(-1)^k\right)\\
-	= 2\pi a\left(1+\sum_{k\geq 1}\frac{(1-2k)[(2k-2)!]^2}{4^{2k-1}(k!)^2[(k-1)!]^2}c^k(-1)^k\right)\\
-	= 2\pi a\left(1+\sum_{k\geq 1}\frac{(1-2k)}{4^{2k-1}}c^k(-1)^k\left(\frac{(2k-2)!}{k!(k-1)!}\right)^2\right)\\
-	= 2\pi a\left(1-\sum_{k\geq 1}\frac{(2k-1)}{4^{2k-1}}(-c)^k\left(\frac{(2k-2)!}{k[(k-1)!]^2}\right)^2\right)\\
-	= 2\pi a\left(1-\sum_{k\geq 1}\frac{(2k-1)}{4^{2k-1}}(-c)^k\left(\frac{1}{k}{{2k-2}\choose{k-1}}\right)^2\right)\\
-	= 2\pi a\left(1-\sum_{k\geq 1}\frac{(2k-1)}{4^{2k-1}k^2}(-c)^k{{2k-2}\choose{k-1}}^2\right)\\
-\end{split}
-\end{equation*}
-Reindex:
-\begin{equation*}
-\begin{split}
-	= 2\pi a\left(1-\sum_{k\geq 0}\frac{(2k+1)}{4^{2k+1}(k+1)^2}(-c)^{k+1}{{2k}\choose{k}}^2\right)\\
-	= 2\pi a\left(1-\frac{1}{4}\sum_{k\geq 0}\frac{(2k+1){{2k}\choose{k}}^2}{4^{2k}(k+1)^2}(-c)^{k+1}\right)\\
-\end{split}
-\end{equation*}
-\begin{tcolorbox}
-\begin{equation*}
-\begin{split}
-	= \frac{\pi a}{2}\left(4-\sum_{k=0}^{\infty}\frac{(2k+1){{2k}\choose{k}}^2}{16^k(k+1)^2}(-c)^{k+1}\right)\\
-\end{split}
-\end{equation*}
-\end{tcolorbox}
-The approximation of this summation also equals the integral approximation so it should be valid. Also note when c=0 (a=b so the ellipse is a circle) the whole summation vanishes so the expression becomes $2\pi a$ which is expected.
-
-
-
-\section{Summary}
-I have derived 2 infinite sums for the perimeter of an ellipse depending on $|c|$ Where 2a is the width, 2b is the height and $c=\frac{a^2}{b^2}-1$. I can't find them anywhere on the internet so they might be unique?
-\begin{equation*}
-\end{equation*}
-
-If $|c| \leq 1$:
-\begin{equation*}
-\begin{split}
-	\text{Perimeter} = \frac{\pi a}{2}\left(4-\sum_{k=0}^{\infty}\frac{(2k+1){{2k}\choose{k}}^2}{16^k(k+1)^2}(-c)^{k+1}\right)
-\end{split}
-\end{equation*}
-
-If $|c| \geq 1$:
-\begin{equation*}
-\begin{split}
-	\text{Perimeter} = \frac{\pi a\sqrt{c+1}}{2} \left[4 - \sum_{k=0}^{\infty}\frac{(2k+1){{2k}\choose k}^2c^{k+1}}{16^k(k+1)^2(c+1)^{k+1}}\right]
-\end{split}
-\end{equation*}
-I noticed that the formula for $|c| \geq 1$ is just the other formula but with a and b flipped around, which is very nice - so you could probably make this just one formula by defining $a > b$.
-
-\section{Discovery}
-I realized if you plug c=1 into both formulae, they must be equal, therefore:
-\begin{equation*}
-\begin{split}
-	\frac{\pi a}{2}\left(4-\sum_{k\geq 0}\frac{(2k+1){{2k}\choose{k}}^2}{16^k(k+1)^2}(-1)^{k+1}\right)
-	= \frac{\pi a\sqrt{2}}{2} \left[4 - \sum_{k\geq 0}\frac{(2k+1){{2k}\choose k}^21^{k+1}}{16^k(k+1)^22^{k+1}}\right]\\
-\end{split}
-\end{equation*}
-Now simplify:
-\begin{equation*}
-\begin{split}
-	4-\sum_{k\geq 0}\frac{(2k+1){{2k}\choose{k}}^2}{16^k(k+1)^2}(-1)^{k+1}
-	= 4\sqrt2 - \sqrt2\sum_{k\geq 0}\frac{(2k+1){{2k}\choose k}^2}{16^k(k+1)^22^{k+1}}\\
-	\sum_{k\geq 0}\sqrt2\frac{(2k+1){{2k}\choose k}^2}{16^k(k+1)^22^{k+1}}
-	-\sum_{k\geq 0}\frac{(2k+1){{2k}\choose{k}}^2}{16^k(k+1)^2}(-1)^{k+1}
-	= 4\sqrt2 - 4\\
-	\sum_{k\geq 0}\left[\sqrt2\frac{(2k+1){{2k}\choose k}^2}{16^k(k+1)^22^{k+1}}
-	- \frac{(2k+1){{2k}\choose{k}}^2}{16^k(k+1)^2}(-1)^{k+1}\right]
-	= 4\sqrt2 - 4\\
-	\sum_{k\geq 0}\left[\frac{(2k+1){{2k}\choose k}^2}{16^k(k+1)^2}\left(\frac{\sqrt2}{2^{k+1}}
-	- (-1)^{k+1}\right)\right] = 4\sqrt2 - 4\\
-	\sum_{k\geq 0}\left[\frac{(2k+1){{2k}\choose k}^2}{16^k(k+1)^2}\left(\frac{2}{2^{k+1}}
-	- \sqrt2(-1)^{k+1}\right)\right] = 8 - 4\sqrt2\\
-	\sum_{k\geq 0}\left[\frac{(2k+1){{2k}\choose k}^2}{16^k(k+1)^2}\frac{1}{2^k}\left(1
-	+ \sqrt2(-1)^{k}2^k\right)\right] = 8 - 4\sqrt2\\
-	\sum_{k\geq 0}\left[\frac{(2k+1){{2k}\choose k}^2}{16^k2^k(k+1)^2}\left(1
-	+ \sqrt2(-2)^k\right)\right] = 8 - 4\sqrt2\\
-\end{split}
-\end{equation*}
-
-\begin{tcolorbox}
-\begin{equation*}
-\begin{split}
-	\sum_{k=0}^{\infty}\left[\frac{(2k+1){{2k}\choose{k}}^2}{32^k(k+1)^2}\left(1
-	+ \sqrt2(-2)^{k}\right)\right]
-	= 8 - 4\sqrt2
-\end{split}
-\end{equation*}
-\end{tcolorbox}
-Python and WolframAlpha approximations agree - WolframAlpha doesn't know the exact form and I do :)
-
-
-
-\end{document}
