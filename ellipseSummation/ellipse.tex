@@ -75,7 +75,7 @@ Reindex:
 \begin{tcolorbox}
 \begin{equation}
 \begin{split}
-	C = \frac{\pi a}{2}\left(4-\sum_{k=0}^{\infty}\frac{16^{-k}{{2k+1}\choose k}^2}{2k+1}e^{2k+2}\right)\\
+	C = \frac{\pi a}{2}\left(4-\sum_{k=0}^{\infty}\frac{{{2k+1}\choose k}^2e^{2k+2}}{16^k(2k+1)}\right)\\
 \end{split}
 \end{equation}
 \end{tcolorbox}
@@ -149,7 +149,7 @@ Reindex:
 But note, if we evaluate C when $e^2 = \frac{1}{2}$ using (2) we get:
 \begin{equation*}
 \begin{split}
-	C\biggr\rvert_{e^2=1/2} = \frac{\pi a}{2}\left(4-\sum_{k\geq 0}\frac{16^{-k}{{2k+1}\choose k}^2}{2k+1}\frac{1}{2^{k+1}}\right)\\
+	C\biggr\rvert_{e^2=1/2} = \frac{\pi a}{2}\left(4-\sum_{k\geq 0}\frac{{{2k+1}\choose k}^2}{(2k+1)16^k}\cdot\frac{1}{2^{k+1}}\right)\\
 \end{split}
 \end{equation*}
 
@@ -194,17 +194,22 @@ Nice.
 
 
 \section{Summary}
-I have derived two infinite sums, (2) and (3). One is the circumference, $C$, of an ellipse with eccentricity $e$ and semi-major axis $a$:
+I have derived two infinite sums, (2) and (3).
+One is a sum that I have found a closed form for:
 \begin{equation*}
-	C = \frac{\pi a}{2}\left(4-\sum_{k=0}^{\infty}\frac{16^{-k}{{2k+1}\choose k}^2}{2k+1}e^{2k+2}\right)\\
-\end{equation*}
-And the other is one that I have found a closed form for:
-\begin{equation*}
-\begin{split}
 	\sum_{k=0}^{\infty} \frac{{{2k+1}\choose k}^2\left(1+\sqrt2(-2)^{k} \right)}{(2k+1)32^k} 
 	= 8 - 4\sqrt2\\
-\end{split}
 \end{equation*}
+And the other is the circumference, $C$, of an ellipse with eccentricity $e$ and semi-major axis $a$:
+\begin{equation*}
+	C = \frac{\pi a}{2}\left(4-\sum_{k=0}^{\infty}\frac{{{2k+1}\choose k}^2e^{2k+2}}{16^k(2k+1)}\right)\\
+\end{equation*}
+Note that we may calculate the first few coefficients of $e$ in the sum, say up to k=5:
+\begin{equation*}
+	C \approx 2\pi a - 
+	\frac{\pi a e^2}{2} - \frac{3\pi a e^4}{32} - \frac{5\pi a e^6}{128} - \frac{175\pi a e^8}{8192} - \frac{441\pi a e^{10}}{32768}
+\end{equation*}
+This approximation should be more accurate when the eccentricity is small.
 
 
 
@@ -256,88 +261,7 @@ Proof:
 	= \frac{1-2k}{4^{k-1}}\left[\frac{(2k-2)!}{(k-1)!}\right]^2
 \end{split}
 \end{equation*}
-% TBA
 
 
 
 \end{document}
-
-
-
-
-
-
-
-
-
-
-
-
-
-% temp store of stuff to add to appendix:
-
-
-We now focus on $\int_{0}^{\pi/2}\cos^{2k}x\,\,dx$, let this be $I_k$.
-\begin{equation*}
-\begin{split}
-	I_k = \int_{0}^{\pi/2}\cos^{2k-1}(x)\cos x\,\,dx\\
-	\text{Using IBP:}\\
-	= \cancelto{0}{\sin x\cos^{2k-1}x\Big|_{0}^{\pi/2}} - \int_{0}^{\pi/2}(2k-1)\times-\sin^2x\cos^{2k-2}x\,\,dx\\
-	= (2k-1)\int_{0}^{\pi/2}\cos^{2k-2}x(1-\cos^2x)\,\,dx\\
-	= (2k-1)\cancelto{I_{k-1}}{\left(\int_{0}^{\pi/2}\cos^{2k-2}x\,\,dx\right)} - (2k-1)\cancelto{I_k}{\int_{0}^{\pi/2}\cos^2x\,\,dx}\\
-	\therefore I_k + (2k-1)I_k = (2k-1)I_{k-1}\\
-	I_k = \frac{2k-1}{2k}I_{k-1}
-\end{split}
-\end{equation*}
-Note that $I_0 = \frac{\pi}{2}$
-\begin{equation*}
-\begin{split}
-	\therefore I_k = \frac{\pi}{2}\left(\frac{1}{2}\times\frac{3}{4}\times\dots\times\frac{2k-1}{2k}\right)\\
-	= \int_{0}^{\pi/2}\cos^{2k}(x)\,\,dx = \frac{\pi}{2}\prod_{n=1}^{k}\frac{2n-1}{2n}
-\end{split}
-\end{equation*}
-
-
-Now we solve $I_k$.
-\begin{equation*}
-\begin{split}
-	I_k = \int_{0}^{\pi/2}\sin^{2k-1}x\sin(x)\,dx\\
-	\text{Using IBP:}\\
-	= \cancelto{0}{-\sin^{2k-1}x\cos(x)\Big|_0^{\pi/2}} + (2k-1)\int_0^{\pi/2}\sin^{2k-2}x\cos^2x\,dx\\
-	= (2k-1)\int_0^{\pi/2}\left(\sin^{2k-2}x - \sin^{2k}x\right)\,dx\\
-	= (2k-1)\cancelto{I_{k-1}}{\int_0^{\pi/2}\sin^{2k-2}x\,dx} - (2k-1)\cancelto{I_k}{\int_0^{\pi/2}\sin^{2k}\,dx}\\
-	\therefore I_k + (2k-1)I_k = (2k-1)I_{k-1}\\
-	I_k = \frac{2k-1}{2k}I_{k-1}
-\end{split}
-\end{equation*}
-Note that $I_0=\frac{\pi}{2}$
-\[\therefore I_k = \frac{2k-1}{2k}\times\frac{2k-3}{2k-2}\times\dots\times\frac{1}{2}I_0 = \frac{\pi}{2}\prod_{n=1}^k\frac{2n-1}{2n}\]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Note
-\begin{equation*}
-\begin{split}
-	\prod_{n=1}^k(2n-3)(2n-1)
-	= (-1 \times 1) \times (1\times 3)\times\dots\times[(2k-3)\times(2k-1)]\\
-	= -1 \times 1^2 \times 3^2 \times\dots\times(2k-3)^2 \times (2k-1)\\
-	= (1-2k)\left[1\times3\times\dots\times(2k-3)\right]^2\\
-	= (1-2k)\left[\frac{1\times2\times3\times\dots\times(2k-3)\times(2k-2)}{2\times4\times\dots\times(2k-2)}\right]^2\\
-	= \frac{1-2k}{4^{k-1}}\left[\frac{(2k-2)!}{(k-1)!}\right]^2
-\end{split}
-\end{equation*}
