@@ -1,2 +1,2 @@
 # LatexProjects
-My latex projects. Mostly just a collection of my random mathematical thoughts, written up neatly.
+My random mathematical thoughts (and as far as I'm aware, original).
