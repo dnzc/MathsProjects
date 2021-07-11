@@ -1,0 +1,31 @@
+"A general case of toggling diagonals"
+This is about a generalized proof I came up with for Tournament of Towns November 18, 1984 question 3.
+
+"Experimentation"
+
+( I have reframed the question, you can view the original at https://www.turgor.ru/en/problems/06/index.php )
+
+Let's begin, here's the question:
+
+10 cities lie equally spaced around a circle. Every city has a path connecting it to every other city.
+There is one switched-on light at each city and each point where two or more paths intersect.
+We are allowed to simultaneously toggle all the lamps on a single road.
+Is it possible to turn all of the lamps off?
+
+This is an "is it possible" question, so we need to either prove it is impossible or give a construction that works. Let's consider some smaller cases first.
+
+If there are 2 cities, we can toggle the only path connecting them and both the lamps turn off - simple enough.
+
+What about 3 cities?
+
+
+"Observations"
+
+
+
+"Solving"
+
+"Generalizing"
+
+In a regular decagon, segments are drawn connecting every two points. The number "+1" is written on each vertex and on each point where segments internally intersect.
+We can simultaneously change the sign of all numbers
