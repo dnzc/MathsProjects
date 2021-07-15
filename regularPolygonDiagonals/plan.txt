@@ -1,7 +1,8 @@
 "A general case of toggling diagonals"
-This is about a generalized proof I came up with for Tournament of Towns November 18, 1984 question 3.
 
 "Experimentation"
+
+This is about a generalized proof I came up with for Tournament of Towns November 18, 1984 question 3.
 
 ( I have reframed the question, you can view the original at https://www.turgor.ru/en/problems/06/index.php )
 
