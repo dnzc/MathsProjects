@@ -1,4 +1,0 @@
-# This file is used internally by FFMPEG.
-file 'file:/home/danielc/Github/MathsProjects/regularPolygonDiagonals/media/videos/scene/480p15/partial_movie_files/TitleScene/3163782288_1825382172_2041745683.mp4'
-file 'file:/home/danielc/Github/MathsProjects/regularPolygonDiagonals/media/videos/scene/480p15/partial_movie_files/TitleScene/607903841_259801942_2436847405.mp4'
-file 'file:/home/danielc/Github/MathsProjects/regularPolygonDiagonals/media/videos/scene/480p15/partial_movie_files/TitleScene/607903841_2095731888_1276322727.mp4'
