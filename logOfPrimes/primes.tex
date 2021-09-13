@@ -144,4 +144,17 @@ Rearrange to get
 We have shown our result.
 
 
+
+\section{Conjecture} 
+If we replace $\log_q p$ with the irrational constant c, then we have a conjecture:
+\begin{tcolorbox}
+\begin{equation*}
+\begin{split}
+    \forall a,b \in \mathbb{N}, c \in \mathbb{R} \setminus \mathbb{Q}\\
+    ab = \sum_{x=1}^a \text{min}(b, \big\lfloor cx\big\rfloor) + \sum_{x=1}^b \text{min}(a, \big\lfloor \frac{x}{c} \big\rfloor)\\
+\end{split}
+\end{equation*}
+\end{tcolorbox}
+I've tested values with python and if c is not irrational then it is not always true, but when c is irrational it hasn't failed yet.
+
 \end{document}
