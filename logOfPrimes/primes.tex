@@ -95,7 +95,7 @@ So the overall answer to the problem is the sum of Case 1 and Case 2, which is
 
 We will show that the overall answer is simply $ab$.\\\\
 $n^2 = p^{2a}q^{2b}$ so there are $(2a+1)(2b+1)$ factors of $n^2$.\\\\
-We can consider positive factor pairs of $n^2$ - one number of the pair will $<n$ and the other will be $>n$, except for the case when the factor pair is $(n, n)$. In other words, if $a$ is a positive factor of $n^2$ and $a<n$ then $\frac{n^2}{a} > n$ so one of the factor pair $(a, \frac{n^2}{a})$ will be less than $n$.\\\\
+We can consider positive factor pairs of $n^2$ - one number of the pair will $<n$ and the other will be $>n$, except for the case when the factor pair is $(n, n)$. In other words, if $a$ is a positive factor of $n^2$ and $a<n$ then $\frac{n^2}{a} > n$ so exactly one of the factor pair $(a, \frac{n^2}{a})$ will be less than $n$.\\\\
 Thus the number of factors of $n^2$ that are less than $n$ is
 \[ \# \text{ factors of }n^2 \text{ less than }n = \frac{(2a+1)(2b+1) - 1}{2} = 2ab + a + b\]
 where we exclude the $(n, n)$ case and then halve.\\\\
