@@ -4,7 +4,7 @@ I have derived a formula:
 
 ![Main Result](result.png)
 
-This project explains the derivation and forms a conjecture that the above formula is true for any irrational value of log_p(q) :
+This project explains the derivation and forms a conjecture that the above formula is true for any positive irrational value c in place of log_p(q) :
 
 ![Conjecture](conjecture.png)
 
