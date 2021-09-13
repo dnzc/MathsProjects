@@ -6,4 +6,4 @@ I have derived a formula:
 
 This project explains the derivation and forms a conjecture that the above formula is true for any irrational value of log_p(q) :
 
-![Conjecture](result.png)
+![Conjecture](conjecture.png)
