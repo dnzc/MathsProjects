@@ -1,0 +1,147 @@
+\documentclass{article}
+
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
+\usepackage{cancel}
+\usepackage{tcolorbox}
+
+\begin{document}
+
+\title{A random formula with logs of primes}
+\author{dnzc}
+\date{}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+
+
+\section{Introduction}
+
+We will derive the following fact:
+
+$\forall a,b,p,q \in \mathbb{N}$ with $p,q$ distinct primes,
+
+\[ab = \sum_{x=1}^a \text{min}(b, \lfloor x \log_q p\rfloor) + \sum_{x=1}^b \text{min}(a, \lfloor x \log_p q\rfloor)\]
+This formula was derived by thinking about the following problem:\\\\
+Let $n=2^{31}3^{19}$. How many positive divisors of $n^2$ are less than $n$ but do not divide $n$?\\\\
+We will solve a more general version of the above problem in two different ways, which will lead us to the main result arrived at in the Summary section.
+
+
+\section{Solving the Problem}
+The version of the problem that we will think about is as follows:
+For some $a,b,p,q \in \mathbb{N}$ with $p,q$ distinct primes, let $n = p^{a}q^{b}$. How many positive divisors of $n^2$ are less than $n$ but do not divide $n$?
+
+
+\subsection{Computational Way}
+
+The factors of $n^2$ are in the form $p^r q^s, \,\,r,s \in \mathbb{Z}$ with $0 \leq r \leq 2a, 0 \leq q \leq 2b$\\
+If this factor does not divide $n$ then we must have $r>a$ or $s>b$.\\
+We cannot have both $r>a$ and $s>b$ since that would imply $p^r q^s > n$ and we are counting the factors that are less than n.
+Thus these cases are disjoint and we can count them separately.
+
+\subsubsection{Case 1}
+We will count the case when $r>a$.\\
+Then more specifically, $a < r \leq 2a$ and $0 \leq s < b$. And:
+\begin{equation*}
+\begin{split}
+    p^r q^s < p^a q^b\\
+    \implies p^{r-a} < q^{b-s}
+\end{split}
+\end{equation*}
+Let $x = r-a, y=b-s$\\
+Then with some inequality manipulations we get $1 \leq x \leq a$ and $1 \leq y \leq b$
+\begin{equation*}
+\begin{split}
+    p^x < q^y\\
+    \implies x \log_q p < y \text{ (log rules)}\\
+    \implies \lfloor x \log_q p \rfloor + 1 \leq y \leq b \text{ (} \log_q p \text{ is irrational)}
+\end{split}
+\end{equation*}
+So for any given x, the number of possibilities for y contributed to the count is
+\[\text{max}(0, b - \lfloor x\log_q p\rfloor)\]
+We use the "max" function here to contribute 0 if $\lfloor x \log_q p\rfloor \geq b$ rather than contributing a negative number (since there are 0 possibilities for y in that case)\\
+So, the total number of possibilities counted by Case 1 is the sum of this over all possible values of x:
+\[ = \sum_{x=1}^a \text{max}(0, b - \lfloor x \log_q p\rfloor)\]
+
+\subsubsection{Case 2}
+The case when $s>b$ is symmetric to Case 1, with p,q swapped and a,b swapped but the argument is entirely the same.\\
+Thus similarly to Case 1, the count contributed by this case is
+\[ \sum_{x=1}^b \text{max}(0, a - \lfloor x \log_p q\rfloor)\]
+
+\subsubsection{Total}
+So the overall answer to the problem is the sum of Case 1 and Case 2, which is
+\begin{equation*}
+\begin{split}
+    \sum_{x=1}^a \text{max}(0, b - \lfloor x \log_q p\rfloor) + \sum_{x=1}^b \text{max}(0, a - \lfloor x \log_p q\rfloor)\\
+    = \sum_{x=1}^a \left[ b - \text{min}(b, \lfloor x \log_q p\rfloor) \right] + \sum_{x=1}^b \left[ a - \text{min}(a, \lfloor x \log_p q\rfloor) \right] \\
+    = 2ab - \left[ \sum_{x=1}^a \text{min}(b, \lfloor x \log_q p\rfloor) + \sum_{x=1}^b \text{min}(a, \lfloor x \log_p q\rfloor) \right]
+\end{split}
+\end{equation*}
+\begin{tcolorbox}
+\begin{equation}
+\begin{split}
+    \therefore \text{answer} = 2ab - \left[ \sum_{x=1}^a \text{min}(b, \lfloor x \log_q p\rfloor) + \sum_{x=1}^b \text{min}(a, \lfloor x \log_p q\rfloor) \right]
+\end{split}
+\end{equation}
+\end{tcolorbox}
+
+
+
+
+
+\subsection{Combinatorial Way}
+
+We will show that the overall answer is simply $ab$.\\\\
+$n^2 = p^{2a}q^{2b}$ so there are $(2a+1)(2b+1)$ factors of $n^2$.\\\\
+We can consider positive factor pairs of $n^2$ - one number of the pair will $<n$ and the other will be $>n$, except for the case when the factor pair is $(n, n)$. In other words, if $a$ is a positive factor of $n^2$ and $a<n$ then $\frac{n^2}{a} > n$ so one of the factor pair $(a, \frac{n^2}{a})$ will be less than $n$.\\\\
+Thus the number of factors of $n^2$ that are less than $n$ is
+\[ \# \text{ factors of }n^2 \text{ less than }n = \frac{(2a+1)(2b+1) - 1}{2} = 2ab + a + b\]
+where we exclude the $(n, n)$ case and then halve.\\\\
+
+Now,
+\begin{equation*}
+\begin{split}
+    \# \text{ factors of } n^2 \text{ less than } n \text{ AND divide }n\\
+    (\# \text{ factors of } n) - 1 \text{  (since we exclude n as a factor of n)}\\
+    = (a+1)(b+1) - 1 = ab + a + b
+\end{split}
+\end{equation*}
+
+Finally,
+\begin{equation*}
+\begin{split}
+    \text{answer = } \# \text{ factors of } n^2 \text{ less than } n \text{ AND NOT divide }n\\
+    = \# \text{ factors of }n^2 \text{ less than }n - 
+    \# \text{ factors of } n^2 \text{ less than } n \text{ AND divide }n\\
+    = (2ab + a + b) - (ab + a + b)\\
+    = ab
+\end{split}
+\end{equation*}
+\begin{tcolorbox}
+\begin{equation}
+\begin{split}
+    \therefore \text{answer} = ab
+\end{split}
+\end{equation}
+\end{tcolorbox}
+
+
+
+\section{Summary} 
+Equating (1) and (2):
+\[ab = 2ab - \left[ \sum_{x=1}^a \text{min}(b, \lfloor x \log_q p\rfloor) + \sum_{x=1}^b \text{min}(a, \lfloor x \log_p q\rfloor) \right]\]
+Rearrange to get
+\begin{tcolorbox}
+\begin{equation*}
+\begin{split}
+    ab = \sum_{x=1}^a \text{min}(b, \lfloor x \log_q p\rfloor) + \sum_{x=1}^b \text{min}(a, \lfloor x \log_p q\rfloor)\\
+    \forall a,b,p,q \in \mathbb{N} \text{ with } p,q \text{ distinct primes}
+\end{split}
+\end{equation*}
+\end{tcolorbox}
+We have shown our result.
+
+
+\end{document}
