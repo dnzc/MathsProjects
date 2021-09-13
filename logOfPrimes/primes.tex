@@ -146,15 +146,21 @@ We have shown our result.
 
 
 \section{Conjecture} 
-If we replace $\log_q p$ with the irrational constant c, then we have a conjecture:
+If we replace $\log_q p$ with the positive irrational constant c, then we have a conjecture:
 \begin{tcolorbox}
 \begin{equation*}
 \begin{split}
-    \forall a,b \in \mathbb{N}, c \in \mathbb{R} \setminus \mathbb{Q}\\
+    \forall a,b \in \mathbb{N}, c \in \mathbb{R} \setminus \mathbb{Q}, c>0\\
     ab = \sum_{x=1}^a \text{min}(b, \big\lfloor cx\big\rfloor) + \sum_{x=1}^b \text{min}(a, \big\lfloor \frac{x}{c} \big\rfloor)\\
 \end{split}
 \end{equation*}
 \end{tcolorbox}
-I've tested values with python and if c is not irrational then it is not always true, but when c is irrational it hasn't failed yet.
+
+Then we note that this can be easily proven true by counting the lattice points inside a rectangle cut through by a line (similar to the pretty picture lemma). More specifically:\\\\
+Consider the line y=cx and the rectangle with points (0,0), (a+1, 0), (b+1,0) (a+1, b+1).\\\\
+We will count the number of points inside the rectangle in two different ways. (Note c is irrational so no lattice points lie on y=cx)\\\\
+One way is directly width*height = a*b.\\
+The other way is counting the points inside the rectangle and underneath the line y=cx by summing for each value of x, and then doing the same thing for y.\\\\
+Doing this, we arrive at the conjecture, QED.
 
 \end{document}
