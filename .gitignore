@@ -4,8 +4,3 @@
 *.log
 *.synctex.gz
 *.toc
-
-__pycache__/
-media/images
-media/texts/
-media/videos/
