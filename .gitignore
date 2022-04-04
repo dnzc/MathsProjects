@@ -5,3 +5,8 @@
 *.synctex.gz
 *.xdv
 *.toc
+orbit/__pycache__
+orbit/media/images
+orbit/media/Tex
+orbit/media/texts
+orbit/media/videos/scene/480p15/partial_movie_files
